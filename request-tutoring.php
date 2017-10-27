@@ -41,7 +41,7 @@
 			</p>
             
             <div>
-                <form method="post" action="<?php echo htmlspecialchars(db.php)?>" target="_blank" id="submit-form">
+                <form method="post" target="_self" id="submit-form">
                     <div class="form">
                         
                         <div class="lname-form-padding">
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="submit-pad">
-                        <input type="submit" id="submit-form" value="Send Request">
+                        <input type="submit" id="submit-form" action="<?php echo htmlspecialchars(db.php)?>" value="Send Request">
                         </div>
 
                        
