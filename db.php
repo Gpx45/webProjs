@@ -1,23 +1,23 @@
 <?php
-$ sfName, slname, stID, regDate, studentEmail, subject, message = "";
+$sfName = $slname = $stID = $regDate = $studentEmail = $subjec = $message = "";
 
  if ($SERVER["REQUEST_METHOD"] == "POST"){
-	 slName = userInput($data);
-	 sfName = userInput($data);
-	 stID = userInput($data);
-	 regDate = userInput($data);
-	 subject = userInput($data);
-	 message = userInput($data);
+	 $slName = userInput($data);
+	 $sfName = userInput($data);
+	 $stID = userInput($data);
+	 $regDate = userInput($data);
+	 $subject = userInput($data);
+	 $message = userInput($data);
 	 
  };
  
   if ($SERVER["REQUEST_METHOD"] == "GET"){
-	 slName = userInput($data);
-	 sfName = userInput($data);
-	 stID = userInput($data);
-	 regDate = userInput($data);
-	 subject = userInput($data);
-	 message = userInput($data);
+	 $slName = userInput($data);
+	 $sfName = userInput($data);
+	 $stID = userInput($data);
+	 $regDate = userInput($data);
+	 $subject = userInput($data);
+	 $message = userInput($data);
 	 
  };
 
