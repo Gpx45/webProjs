@@ -41,7 +41,11 @@
 			</p>
             
             <div>
+<<<<<<< HEAD
                 <form method="post" action="post" target="_self" id="submit-form">
+=======
+                <form method="post" target="_self" id="submit-form">
+>>>>>>> a7b45504e772fc67b0dc0f9e7af8dec99fda776a
                     <div class="form">
                         
                         <div class="lname-form-padding">
@@ -91,7 +95,11 @@
                         </div>
 
                         <div class="submit-pad">
+<<<<<<< HEAD
                         <input type="submit" method="post" action="<?php echo htmlspecialchars(db.php)?>" id="submit-form" value="Send Request">
+=======
+                        <input type="submit" id="submit-form" action="<?php echo htmlspecialchars(db.php)?>" value="Send Request">
+>>>>>>> a7b45504e772fc67b0dc0f9e7af8dec99fda776a
                         </div>
 
                        
