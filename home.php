@@ -26,7 +26,7 @@
 		<ul class="nv">
 			<li><a href="home.php">Home</a></li>
 			<li><a href="request-tutoring.php">Request Tutoring</a> </li>
-			<li><a href="home.php">Tutoring Enrollment List</a></li>
+			<li><a href="enrollment.php">Tutoring Enrollment List</a></li>
 			<li><a href="home.php">Student Search</a></li>
 		</ul>
 	</nav>

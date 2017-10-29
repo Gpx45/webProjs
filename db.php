@@ -1,32 +1,30 @@
+
+<h2>MySQL DB</h2>
 <?php
-$sfName = $slname = $stID = $regDate = $studentEmail = $subjec = $message = "";
+$ErrorMsg = array();
+$DBConnect = @new mysqli("localhost","root","","tutoringsite");
+$DBstudents_t = "tutoringsite";
+if($DBConnect->connect_errno){
+    $ErrorMsg[] = "The Database Server is not available.";
+    foreach($ErrorMsg as $msg){
+        echo "<p>" . $msg . "</p>\n";
 
- if ($SERVER["REQUEST_METHOD"] == "POST"){
-	 $slName = userInput($data);
-	 $sfName = userInput($data);
-	 $stID = userInput($data);
-	 $regDate = userInput($data);
-	 $subject = userInput($data);
-	 $message = userInput($data);
-	 
- };
- 
-  if ($SERVER["REQUEST_METHOD"] == "GET"){
-	 $slName = userInput($data);
-	 $sfName = userInput($data);
-	 $stID = userInput($data);
-	 $regDate = userInput($data);
-	 $subject = userInput($data);
-	 $message = userInput($data);
-	 
- };
+    };
+}
+else{
+    echo "Successful connection.";
+    $Result = @$DBConnect->select_db($DBstudents_t); 
+    if($Result === FALSE){
+        echo "<p>Unable to select the database.</p>"
+        . $DBConnect->errno.": " . $DBConnect->error."\n";
+    }
+    else{
+        echo "You are now in students_t table!";
+    };
 
- function userInput($data){
-	 $data = trim($data);
-	 $data = stripslashes($data);
-	 $data = htmlspecialchars($data);
-	 return $data;
-	 
- }
+    $DBConnect->close();
+};
+
+
 
 ?>

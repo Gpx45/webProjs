@@ -152,17 +152,8 @@ a {
 
 .form {
     width: 640px;
-}
-
-.fname-form-padding {
-    padding-bottom: 20px;
-    margin-right: 10px;
-    float: left;
-
-}
-
-.lname-form-padding {
-    padding-bottom: 20px;
+    height: 500px;
+    
 }
 
 .msg-form-padding {
@@ -179,4 +170,13 @@ a {
     position: relative;
     margin-left: 100px;
     margin-top: 10px;
+}
+
+.error {
+    color: #FF0000;
+    
+}
+
+.lil-padding {
+    margin-top: 20px;
 }
