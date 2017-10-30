@@ -15,72 +15,6 @@
 
 	<body>
 
-
-
-    <?php
-
-    $lastName = $firstName = $StudentID = $rgDate = 
-    $email = $selection = $messages = "";
-
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    };
-                        
-    $lastNameErr = $firstNameErr = $StudentIDErr = $dateErr = 
-    $emailErr = $selectionErr = $messagesErr = "";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST["lname"])) {
-            $lastNameErr = "Last Name is required";
-        } else {
-            $raw_input = test_input($_POST["lname"]);
-            $lastName = ucwords($raw_input);
-        }
-
-        if (empty($_POST["fname"])) {
-            $firstNameErr = "First Name is required";
-        } else {
-            $raw_input = test_input($_POST["fname"]);
-            $firstName = ucwords(raw_input);
-        }
-
-        if (empty($_POST["studentID"])) {
-            $StudentIDErr = "Student ID Required";
-        } else {
-            $StudentID = test_input($_POST["studentID"]);
-        }
-
-        if (empty($_POST["rdate"])) {
-            $dateErr = "Date Required";
-        } else {
-            $rgDate = test_input($_POST["rdate"]);
-        }
-
-        if (empty($_POST["email"])) {
-            $emailErr = "Email is required";
-        } else {
-            $email = test_input($_POST["email"]);
-        }
-                    
-        if (empty($_POST["selection"])) {
-            $selectionErr = "Select Your  Course";
-        } else {
-            $selection = test_input($_POST["selection"]);
-        }
-                    
-        if (empty($_POST["comments"])) {
-            $messagesErr = "Please Enter a Message";
-        } else {
-            $messages = test_input($_POST["comments"]);
-        }
-    }
-    ?>
-
-
-
 	<div id="header">
 		<div>
 		<h1>Tutoring Services</h1>
@@ -93,62 +27,80 @@
 
 	<nav id="nav">
 		<ul class="nv">
-			<li><a href="home.php">Home</a></li>
-			<li><a href="request-tutoring.php">Request Tutoring</a> </li>
-			<li><a href="enrollment.php">Tutoring Enrollment List</a></li>
-			<li><a href="home.php">Student Search</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="tutor.php">Request Tutoring</a> </li>
+        <li><a href="enrollment.php">Tutoring Enrollment List</a></li>
+        <li><a href="search.php">Student Search</a></li>
 		</ul>
 	</nav>
 
-	<div class="r-img-div">
-		<div>
-            
+	<div class="r-imgr-div">
+    <?php
+        echo "<h2 class='webkit'>MySQL DB</h2>";
 
-        </div>
+            $ErrorMsg = array();
+            $DBConnect = @new mysqli("localhost","root","","tutoringsite");
+            $DBstudents_t = "tutoringsite";
+            if($DBConnect->connect_errno){
+                $ErrorMsg[] = "The Database Server is not available.";
+                foreach($ErrorMsg as $msg){
+                    echo "<p>" . $msg . "</p>\n";
+
+                };
+            }
+            else{
+                echo "Successful connection.";
+                $Result = @$DBConnect->select_db($DBstudents_t); 
+                if($Result === FALSE){
+                    echo "<p>Unable to select the database.</p>"
+                    . $DBConnect->errno.": " . $DBConnect->error."\n";
+                }
+                else{
+                    echo "You are now in students_t table!";
+                };
+
+
+                $result = mysqli_query($DBConnect,"SELECT * FROM students_t");
+                
+                echo "<table border='1' width='960px'>
+                        <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>StudentID</th>
+                        <th>Date</th>
+                        <th>E-mail</th>
+                        <th>Selection</th>
+                        <th>Message</th>
+                        </tr>";
+                
+                        while($row = mysqli_fetch_array($result)) {
+                          echo "<tr>";
+                          echo "<td>".$row['lastName'] . "</td>";
+                          echo "<td>".$row['firstName']."</td>";
+                          echo "<td>".$row['studentID'] . "</td>";
+                          echo "<td>".$row['regDate'] . "</td>";
+                          echo "<td>".$row['email'] . "</td>";
+                          echo "<td>".$row['selection']."</td>";
+                          echo "<td>".$row['message'] . "</td>";
+                          echo "</tr>";
+                        }
+                        echo "$row";
+                        echo "</table>";
+                
+                
+
+                $DBConnect->close();
+            }   
+    
+        
+    ?>
        
 	</div>
 
-	<div class="r-text-div">
-		
-			<h2 class="p-adjust" style="margin-bottom: 10px;">Quote of the day</h2>
-                    <div class="rp-adjust">
-                    <q>
-                    Often it isn't the mountains ahead that wear you out, its the little
-                    pebbie in your shoe. 
-                    </q>
-					</div>
-					
-					<div class="image">
-						<img src="images\ma.jpg" alt="Muhammad Ali">
-					</div>
-					<p class="webkit"><u>Muhammad Ali</u></p>
-                <br></br>
-				
-			
-		
-	</div>
-
-	<footer class="footer">
+    <footer class="longer-footer">
 		<p class="small-pad"><b>Tutoring Services LLC</b></p>
 	</footer>
 	</body>
-    <?php
-    /*echo "<h2>Your Input:</h2>";
-            echo $firstName;
-            echo "<br>";
-            echo $lastName;
-            echo "<br>";
-            echo $StudentID;
-            echo "<br>";
-            echo $rgDate;
-            echo "<br>";
-            echo $email;
-            echo "<br>";
-            echo $selection;
-            echo "<br>";
-            echo $messages;
-            ?>
-            */
-            ?>
+	
 </html>
 

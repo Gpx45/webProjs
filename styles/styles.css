@@ -1,7 +1,8 @@
 body {
     margin: auto;
     padding: auto;
-    width: 960px
+    width: 960px;
+    height: auto;
     
 }
 
@@ -74,10 +75,18 @@ a {
 
 /*tutor page*/
 .r-img-div {
-    height: 600px;
+    height: auto;
     background-color: #f0f1f1;
     width:960px;
     position: absolute;
+    
+}
+
+.r-imgr-div {
+    height: auto;
+    background-color: #f0f1f1;
+    width:960px;
+    position: relative;
     
 }
 /*tutor page*/
@@ -96,6 +105,21 @@ a {
     padding-top: 5px;
     clear: both;
     margin-top: 300px;
+}
+
+.long-footer {
+    background-color: #11233B;
+    padding-top: 5px;
+    clear: both;
+    margin-top: auto;
+}
+
+.longer-footer {
+    background-color: #11233B;
+    padding-top: 5px;
+    clear: both;
+    margin-top: auto;
+    position: relative;
 }
 
 .footerHome {
@@ -157,7 +181,7 @@ a {
 }
 
 .msg-form-padding {
-    padding-bottom: 40px;
+    padding-bottom: 60px;
 }
 
 .reset-pad {
@@ -179,4 +203,13 @@ a {
 
 .lil-padding {
     margin-top: 20px;
+}
+
+.statTable {
+    border: 1px solid black;
+}
+
+.webkit {
+    -webkit-margin-before:0em;
+    -webkit-margin-after:0em;
 }

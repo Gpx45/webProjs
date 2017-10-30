@@ -44,7 +44,7 @@
             $firstNameErr = "First Name is required";
         } else {
             $raw_input = test_input($_POST["fname"]);
-            $firstName = ucwords(raw_input);
+            $firstName = ucwords($raw_input);
         }
 
         if (empty($_POST["studentID"])) {
@@ -93,10 +93,10 @@
 
 	<nav id="nav">
 		<ul class="nv">
-			<li><a href="home.php">Home</a></li>
-			<li><a href="request-tutoring.php">Request Tutoring</a> </li>
-			<li><a href="enrollment.php">Tutoring Enrollment List</a></li>
-			<li><a href="home.php">Student Search</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="tutor.php">Request Tutoring</a> </li>
+        <li><a href="enrollment.php">Tutoring Enrollment List</a></li>
+        <li><a href="search.php">Student Search</a></li>
 		</ul>
 	</nav>
 
@@ -149,7 +149,7 @@
                         <div class="lil-padding">
                         <label for="email">E-mail: </label>
                         <input type="text" name="email" size="44" 
-                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]\.(com)(net)(edu)">
+                        pattern="^([a-zA-Z0-9_\-\.]+)&#64([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]\.(com)(net)(edu)">
                         <span class="error">* <?php echo $emailErr;?>
                         </div>
 
@@ -183,14 +183,65 @@
                         <div class="submit-pad">
                         <input type="submit" name="submitButton" value="Send Request">
                         </div>
-
-                       
-                      
+                    
+                    
                     </div>
                     
+                    
+
                 </form>
 
+                
             </div>
+           
+
+            <?php
+               
+                
+                            $ErrorMsg = array();
+                            $DBConnect = @new mysqli("localhost","root","","tutoringsite");
+                            $DBtutorDB = "tutoringsite";
+                            if($DBConnect->connect_errno){
+                                $ErrorMsg[] = "The Database Server is not available.";
+                                foreach($ErrorMsg as $msg){
+                                    echo "<p>" . $msg . "</p>\n";
+                
+                                };
+                            }
+                            else{
+                                echo "Successful connection.";
+                                $Result = @$DBConnect->select_db($DBtutorDB); 
+                                if($Result === FALSE){
+                                    echo "<p>Unable to select the database.</p>"
+                                    . $DBConnect->errno.": " . $DBConnect->error."\n";
+                                }
+                                else{
+                                    echo "You are now in students_t table!";
+                                    
+                                    if(isset($_POST['submitButton'])){
+                                            
+                                        $sentData = "INSERT INTO students_t(lastName,
+                                        firstName, studentID, regDate, email, selection, message)
+                                        VALUES (\"".$lastName."\",\"".$firstName."\",\"".$StudentID."\"
+                                        ,\"".$rgDate."\",\"".$email."\",\"".$selection."\",\"".$messages."\")";
+                                        
+
+                                        if($DBConnect->query($sentData) === TRUE){
+                                            echo "New Record created successfully!";
+                                        }
+                                            else{
+                                                echo "Error:" . $sentData."<br />".$DBConnect->error;
+                                                $DBConnect->close();
+                                            }
+                                    }
+
+                                }
+                            
+                                
+                            }
+                        
+                    
+            ?>
 
         </div>
        
@@ -221,7 +272,8 @@
 	</footer>
 	</body>
     <?php
-    /*echo "<h2>Your Input:</h2>";
+    
+    echo "<h2>Your Input:</h2>";
             echo $firstName;
             echo "<br>";
             echo $lastName;
@@ -235,8 +287,9 @@
             echo $selection;
             echo "<br>";
             echo $messages;
+            
             ?>
-            */
-            ?>
+            
+
 </html>
 
