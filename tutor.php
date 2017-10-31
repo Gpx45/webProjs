@@ -196,8 +196,6 @@
            
 
             <?php
-               
-                
                             $ErrorMsg = array();
                             $DBConnect = @new mysqli("localhost","root","","tutoringsite");
                             $DBtutorDB = "tutoringsite";
@@ -220,6 +218,7 @@
                                     
                                     if(isset($_POST['submitButton'])){
                                             
+
                                         $sentData = "INSERT INTO students_t(lastName,
                                         firstName, studentID, regDate, email, selection, message)
                                         VALUES (\"".$lastName."\",\"".$firstName."\",\"".$StudentID."\"

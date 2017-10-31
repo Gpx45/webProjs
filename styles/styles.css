@@ -180,6 +180,12 @@ a {
     
 }
 
+.form2 {
+    width: 640px;
+    height: auto;
+    
+}
+
 .msg-form-padding {
     padding-bottom: 60px;
 }
@@ -203,6 +209,7 @@ a {
 
 .lil-padding {
     margin-top: 20px;
+    height: auto;
 }
 
 .statTable {
