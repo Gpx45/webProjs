@@ -2,7 +2,7 @@
 
 <?php
 echo "<h2>MySQL DB</h2>";
-function collectDB(){
+function connectDB(){
 
     $ErrorMsg = array();
     $DBConnect = @new mysqli("localhost","root","","tutoringsite");
