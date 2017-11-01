@@ -269,9 +269,10 @@
 	<footer class="footer">
 		<p class="small-pad"><b>Tutoring Services LLC</b></p>
 	</footer>
-	</body>
-    <?php
+    </body>
     
+    <?php
+    /*
     echo "<h2>Your Input:</h2>";
             echo $firstName;
             echo "<br>";
@@ -286,7 +287,7 @@
             echo $selection;
             echo "<br>";
             echo $messages;
-            
+       */     
             ?>
             
 
