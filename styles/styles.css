@@ -1,8 +1,10 @@
-body {
+
+html,body {
     margin: auto;
     padding: auto;
     width: 960px;
     height: auto;
+    position: relative;
     
 }
 
@@ -58,7 +60,7 @@ a {
 }
 /*home page*/
 .img-div {
-    height: 600px;
+    height: auto;
     background-color: #a9acc4;
     width: 640px;
     float: left;
@@ -91,11 +93,11 @@ a {
 }
 /*tutor page*/
 .r-text-div {
-    height: 300px;
+    height: auto;
     background-color: #BBBBBB;
     width: 320px;
     margin-left: 640px;
-   position: relative;
+    position: relative;
   
 }
 /*tutor page*/
@@ -104,7 +106,10 @@ a {
     background-color: #11233B;
     padding-top: 5px;
     clear: both;
-    margin-top: 300px;
+    margin-top: 310px !important;
+    height: auto;
+    position: relative;
+    display: none;
 }
 
 .long-footer {
@@ -207,6 +212,15 @@ a {
     
 }
 
+.sc {
+    color: green;
+    
+}
+
+.sucP {
+    position: absolute;
+};
+
 .lil-padding {
     margin-top: 20px;
     height: auto;
@@ -220,3 +234,4 @@ a {
     -webkit-margin-before:0em;
     -webkit-margin-after:0em;
 }
+

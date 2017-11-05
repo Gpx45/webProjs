@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en-US">
+<html>
 
 
 	<head>
@@ -183,64 +183,11 @@
                         <div class="submit-pad">
                         <input type="submit" name="submitButton" value="Send Request">
                         </div>
-                    
-                    
                     </div>
-                    
-                    
-
                 </form>
-
-                
             </div>
-           
-
-            <?php
-                            $ErrorMsg = array();
-                            $DBConnect = @new mysqli("localhost","root","","tutoringsite");
-                            $DBtutorDB = "tutoringsite";
-                            if($DBConnect->connect_errno){
-                                $ErrorMsg[] = "The Database Server is not available.";
-                                foreach($ErrorMsg as $msg){
-                                    echo "<p>" . $msg . "</p>\n";
-                
-                                };
-                            }
-                            else{
-                                echo "Successful connection.";
-                                $Result = @$DBConnect->select_db($DBtutorDB); 
-                                if($Result === FALSE){
-                                    echo "<p>Unable to select the database.</p>"
-                                    . $DBConnect->errno.": " . $DBConnect->error."\n";
-                                }
-                                else{
-                                    echo "You are now in students_t table!";
-                                    
-                                    if(isset($_POST['submitButton'])){
-                                            
-
-                                        $sentData = "INSERT INTO students_t(lastName,
-                                        firstName, studentID, regDate, email, selection, message)
-                                        VALUES (\"".$lastName."\",\"".$firstName."\",\"".$StudentID."\"
-                                        ,\"".$rgDate."\",\"".$email."\",\"".$selection."\",\"".$messages."\")";
-                                        
-
-                                        if($DBConnect->query($sentData) === TRUE){
-                                            echo "New Record created successfully!";
-                                        }
-                                            else{
-                                                echo "Error:" . $sentData."<br />".$DBConnect->error;
-                                                $DBConnect->close();
-                                            }
-                                    }
-
-                                }
-                            
-                                
-                            }
-                        
-                    
-            ?>
+    
+   
 
         </div>
        
@@ -248,29 +195,63 @@
 
 	<div class="r-text-div">
 		
-			<h2 class="p-adjust" style="margin-bottom: 10px;">Quote of the day</h2>
-                    <div class="rp-adjust">
-                    <q>
-                    Often it isn't the mountains ahead that wear you out, its the little
-                    pebbie in your shoe. 
-                    </q>
-					</div>
+		<h2 class="p-adjust" style="margin-bottom: 10px;">Quote of the day</h2>
+            <div class="rp-adjust">
+                <q>
+                Often it isn't the mountains ahead that wear you out, its the little
+                pebbie in your shoe. 
+                </q>
+			</div>
 					
-					<div class="image">
-						<img src="images\ma.jpg" alt="Muhammad Ali">
-					</div>
-					<p class="webkit"><u>Muhammad Ali</u></p>
-                <br></br>
-				
-			
-		
+				<div class="image">
+				    <img src="images\ma.jpg" alt="Muhammad Ali">
+				</div>
+				<p class="webkit"><u>Muhammad Ali</u></p>
+                <br></br>	
 	</div>
 
-	<footer class="footer">
-		<p class="small-pad"><b>Tutoring Services LLC</b></p>
-	</footer>
+	
     </body>
+    <footer class="footer">
+		<p class="small-pad"><b>Tutoring Services LLC</b></p>
+    </footer>
+    <?php
+    include 'db.php';
+
+    $Result = @$DBconnect->select_db($dataBase); 
+    if($Result === FALSE){
+        echo "<p>Unable to select the database.</p>",
+        $DBconnect->errno.": " . $DBconnect->error."\n";
+    }
+                                    
+    if(isset($_POST['submitButton'])){
     
+    if(empty($_POST["lname"]) || 
+    empty($_POST["fname"]) ||
+    empty($_POST["studentID"]) ||
+    empty($_POST["rdate"]) ||
+    empty($_POST["email"]) ||
+    empty($_POST["selection"]) ||
+    empty($_POST["comments"])){
+        echo " <p class='error'>Please insert required fields</p>";
+    }
+        else{
+            $sentData = "INSERT INTO students_t(lastName,
+        firstName, studentID, regDate, email, selection, message)
+        VALUES (\"".$lastName."\",\"".$firstName."\",\"".$StudentID."\"
+        ,\"".$rgDate."\",\"".$email."\",\"".$selection."\",\"".$messages."\")";
+                                            
+            if($DBconnect->query($sentData) === TRUE){
+            echo " New Record created successfully! ";
+            }
+                                
+            else{
+                echo "Error:" . $sentData."<br />".$DBconnect->error;
+                $DBconnect->close();
+                }
+            }
+    }         
+    ?>
     <?php
     /*
     echo "<h2>Your Input:</h2>";
@@ -288,7 +269,7 @@
             echo "<br>";
             echo $messages;
        */     
-            ?>
+    ?>
             
 
 </html>
