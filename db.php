@@ -25,18 +25,6 @@ function connectDB(){
             echo "You are now in students_t table!";
         };
 
-        $tableSelect = "students_t";
-        $SQLquery = "SELECT * FROM $tableSelect";
-        $QueryResult = @$DBConnect->query($SQLquery);
-        
-        if ($QueryResult === FALSE)
-        echo "<p>Unable to execute the query. " .
-        "Error code " . $DBConnect->errno .
-        ": " . $DBConnect->error . "</p>\n";
-
-        else
-
-        $DBConnect->close();
     };
 };
 
