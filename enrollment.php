@@ -36,7 +36,7 @@
 
 	<div class="r-imgr-div">
     <?php
-        echo "<h2 class='webkit'>MySQL DB</h2>";
+        echo "<h2 class='webkit'>Complete Roster</h2>";
 
             $ErrorMsg = array();
             $DBConnect = @new mysqli("localhost","root","","tutoringsite");
