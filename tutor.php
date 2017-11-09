@@ -123,14 +123,14 @@
                                 
                         <div class="lil-padding">
                         <label for="lastName">Last Name: </label>
-                        <input type="text" name="lname" pattern="[A-Za-z]*\D*">
+                        <input type="text" name="lname" pattern="[A-Za-z]*\D*" title="Please type a only with letters">
                         <span class="error">* <?php echo $lastNameErr;?></span>
                         <br />
                         </div>
                         
                         <div class="lil-padding">
                         <label for="firstName">First Name: </label>
-                        <input type="text" name="fname" pattern="[A-Za-z]*\D*">
+                        <input type="text" name="fname" pattern="[A-Za-z]*\D*" title="Please type a only with letters">
                         <span class="error">* <?php echo $firstNameErr;?>
                         </div>
 

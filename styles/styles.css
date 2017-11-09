@@ -106,10 +106,8 @@ a {
     background-color: #11233B;
     padding-top: 5px;
     clear: both;
-    margin-top: 310px !important;
+    margin-top: 310px;
     height: auto;
-    position: relative;
-    display: none;
 }
 
 .long-footer {
